@@ -24,20 +24,39 @@ def ask(prompt)
 end
 
 loop do
-  index(contacts)
+    index(contacts)
 
-  puts
-  response = ask("Who would you like to see (q to quit)? ")
+    puts
+    response_options = "(n for new, q to quit)"
+    response = ask("Who would you like to see #{response_options}? ")
 
-  break if response == "q"
+    break if response == "q"
 
-  index = response.to_i
+  if response == "n"
+    contact = {}
+    puts "Enter contact info:"
 
-  contact = contacts[index - 1]
+    contact[:name]  = ask("Name? ")
+    contact[:phone] = ask("Phone? ")
+    contact[:email] = ask("Email? ")
 
-  puts
-  show(contact)
-  puts
+    contacts << contact
+
+    puts
+    puts "New contact created:"
+    puts
+
+    show(contact)
+    puts
+  else
+    index = response.to_i
+
+    contact = contacts[index - 1]
+
+    puts
+    show(contact)
+    puts
+  end
 end
 
 puts
