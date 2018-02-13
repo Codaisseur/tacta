@@ -36,34 +36,40 @@ def create_new
   contact
 end
 
+def action_show(contacts, index)
+  contact = contacts[index - 1]
+
+  puts
+  show(contact)
+  puts
+end
+
+def action_new(contacts)
+  contact = create_new
+
+  contacts << contact
+
+  puts
+  puts "New contact created:"
+  puts
+
+  show(contact)
+  puts
+end
+
 loop do
-    index(contacts)
+  index(contacts)
 
-    puts
-    response_options = "(n for new, q to quit)"
-    response = ask("Who would you like to see #{response_options}? ")
+  puts
+  response_options = "(n for new, q to quit)"
+  response = ask("Who would you like to see #{response_options}? ")
 
-    break if response == "q"
+  break if response == "q"
 
   if response == "n"
-    contact = create_new
-
-    contacts << contact
-
-    puts
-    puts "New contact created:"
-    puts
-
-    show(contact)
-    puts
+    action_new(contacts)
   else
-    index = response.to_i
-
-    contact = contacts[index - 1]
-
-    puts
-    show(contact)
-    puts
+    action_show(contacts, response.to_i)
   end
 end
 
