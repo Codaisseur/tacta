@@ -10,6 +10,18 @@ contacts.each_with_index do |contact, i|
   puts "#{i + 1}) #{contact[:name]}"
 end
 
+def index(contacts)
+  contacts.each_with_index do |contact, index|
+    puts "#{i + 1}) #{contact[:name]}"
+  end
+end
+
+def show(contact)
+  puts contact[:name].to_s
+  puts "phone: #{contact[:phone]}"
+  puts "email: #{contact[:email]}"
+end
+
 puts
 print "Who would like to see?"
 response = gets.chomp
