@@ -1,0 +1,11 @@
+<h2>Edit Contact</h2>
+
+<form action="/contacts/<%= @index %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH" />
+  <p>Name: <input type="text" name="name" value="<%= @contact[:name] %>"></p>
+  <p>Phone: <input type="text" name="phone" value="<%= @contact[:phone] %>"></p>
+  <p>Email: <input type="text" name="email" value="<%= @contact[:email] %>"></p>
+  <input type="submit" name=""value="Update">
+  <button><a href="/contacts/<%= @index %>">Cancel</a></button>
+</form>
+
