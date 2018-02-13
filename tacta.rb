@@ -27,7 +27,9 @@ loop do
   index(contacts)
 
   puts
-  response = ask("Who would you like to see? ")
+  response = ask("Who would you like to see (q to quit)? ")
+
+  break if response == "q"
 
   index = response.to_i
 
@@ -37,3 +39,6 @@ loop do
   show(contact)
   puts
 end
+
+puts
+puts "Bye!"
