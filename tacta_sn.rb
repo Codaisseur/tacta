@@ -14,6 +14,11 @@ get '/contacts' do
   erb :'contacts/index'
 end
 
+# GET /contacts/new
+get '/contacts/new' do
+  erb :'contacts/new'
+end
+
 # GET /contacts/:index
 get '/contacts/:index' do
   @index = params[:index].to_i
