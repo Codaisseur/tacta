@@ -12,7 +12,7 @@ end
 
 def index(contacts)
   contacts.each_with_index do |contact, index|
-    puts "#{i + 1}) #{contact[:name]}"
+    puts "#{index + 1}) #{contact[:name]}"
   end
 end
 
@@ -22,15 +22,15 @@ def show(contact)
   puts "email: #{contact[:email]}"
 end
 
+index(contacts)
+
 puts
-print "Who would like to see?"
+print "Who would you like to see? "
 response = gets.chomp
 
-i = response.to_i
+index = response.to_i
 
-contact = contacts[i - 1]
+contact = contacts[index - 1]
 
 puts
-puts contact[:name].to_s
-puts "phone: #{contact[:phone]}"
-puts "email: #{contact[:email]}"
+show(contact)
