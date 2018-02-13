@@ -5,3 +5,7 @@
 <br />
 <a href="/contacts/<%= @index %>/edit">[Edit]</a>
 <a href="/contacts">[Index]</a>
+
+<form action="/contacts/<%= @index %>" method="POST">
+  <input type="submit" name="_method" value="DELETE">
+</form>

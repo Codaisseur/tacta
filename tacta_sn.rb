@@ -1,43 +1,42 @@
-require 'sinatra'
-
-require './contacts_file'
+require "sinatra"
+require "./contacts_file"
 
 # GET /
-get '/' do
-  "<h1>Tacta Contact Manager</h1>"
+get "/" do
+  '<a href="/contacts">View Contacts</a>'
 end
 
 # GET /contacts
-get '/contacts' do
+get "/contacts" do
   @contacts = read_contacts
 
-  erb :'contacts/index'
+  erb :"contacts/index"
 end
 
 # GET /contacts/new
-get '/contacts/new' do
-  erb :'contacts/new'
+get "/contacts/new" do
+  erb :"contacts/new"
 end
 
 # GET /contacts/:index
-get '/contacts/:index' do
+get "/contacts/:index" do
   @index = params[:index].to_i
   contacts = read_contacts
   @contact = contacts[@index]
 
-  erb :'contacts/show'
+  erb :"contacts/show"
 end
 
-get '/contacts/:index/edit' do
+get "/contacts/:index/edit" do
   @index = params[:index].to_i
   contacts = read_contacts
   @contact = contacts[@index]
 
-  erb :'contacts/edit'
+  erb :"contacts/edit"
 end
 
 # POST /contacts
-post '/contacts' do
+post "/contacts" do
   new_contact = {
     name:  params[:name],
     phone: params[:phone],
@@ -53,7 +52,7 @@ post '/contacts' do
   redirect "/contacts/#{index}"
 end
 
-patch '/contacts/:index' do
+patch "/contacts/:index" do
   index = params[:index].to_i
 
   updated_contact = {
@@ -67,4 +66,14 @@ patch '/contacts/:index' do
   write_contacts(contacts)
 
   redirect "/contacts/#{index}"
+end
+
+delete "/contacts/:index" do
+  index = params[:index].to_i
+
+  contacts = read_contacts
+  contacts.delete_at(index)
+  write_contacts(contacts)
+
+  redirect "/contacts"
 end
