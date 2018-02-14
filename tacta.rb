@@ -30,8 +30,8 @@ def create_new
   contact
 end
 
-def action_show(contacts, index)
-  contact = contacts[index - 1]
+def action_show(contacts, id)
+  contact = contacts[id - 1]
 
   puts
   show(contact)
@@ -56,12 +56,12 @@ def action_delete(contacts)
   puts
   response = ask("Delete which contact? ")
 
-  index = response.to_i
+  id = response.to_i
 
   puts
-  puts "Contact for #{contacts[index - 1][:name]} deleted."
+  puts "Contact for #{contacts[id - 1][:name]} deleted."
 
-  contacts.delete_at(index - 1)
+  contacts.delete_at(id - 1)
   write_contacts(contacts)
   puts
 end
